@@ -19,9 +19,9 @@
             </li>
             @if(Auth::user()->role == 1)
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Users</span></a>
+                    <span>Users123</span></a>
             </li>
             @else
             <li class="nav-item">
