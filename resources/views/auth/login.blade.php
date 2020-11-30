@@ -48,7 +48,7 @@
                                                 id="email" aria-describedby="email"
                                                 placeholder="Enter Email Address..." required autocomplete="email" autofocus>
 
-                                             @error('email')
+                                            @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

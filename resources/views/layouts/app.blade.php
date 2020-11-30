@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    @yield('after-css')
+
 </head>
 
 <body id="page-top">
@@ -43,6 +45,8 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                    @include('session-message')
 
                     <!-- Page Heading -->
                     @yield('content')
@@ -72,6 +76,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+    @yield('after-js')
 
 </body>
 

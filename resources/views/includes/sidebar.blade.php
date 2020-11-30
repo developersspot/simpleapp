@@ -19,13 +19,13 @@
             </li>
             @if(Auth::user()->role == 1)
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard') }}">
+                <a class="nav-link" href="{{ route('user.index') }}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Users123</span></a>
+                    <span>Users</span></a>
             </li>
             @else
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('uploadLead') }}">
                     <i class="fas fa-fw fa-file"></i>
                     <span>File Upload</span></a>
             </li>

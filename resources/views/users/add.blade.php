@@ -1,67 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container"  id="adduser">
-
-    <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center">User Add</h6>
+        <div class="d-flex align-content-end">
+            <a href="{{ route('user.index') }}" class="btn btn-secondary btn-sm">Back to list</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form action="{{ route('user.store') }}" method="post">
+            @csrf
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                <div class="col-lg-7">
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                        </div>
-                        <form action="{{ route('user.store') }}" id="adduser" name="adduser" method="POST" class='form-horizontal form-bordered form-validate' autocomplete="off">
-                            @csrf
-
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    @endif
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-
-                                    <input name="name" id="name" class="form-control form-control-user" value="" data-rule-required="true" onkeypress="return numsonly(event)" type="text">
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control form-control-user" id="email"
-                                placeholder="Email Address">
-
-                            </div>
-                            <div class="form-group row">
-
-                                <div class="col-sm-12">
-                                    <input type="password" name="password" class="form-control form-control-user"
-                                    id="password" placeholder="Repeat Password">
-
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                               <div class="col-sm-12">
-                                   <select name="status" id="status">
-                                      <option value="1">Active</option>
-                                      <option value="0">Inactive</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <button type="submit" class="btn btn-primary btn-user btn-block">
-                            Register Account
-                        </a>
-
-                    </form>
-
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" id="status" required>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
             </div>
-        </div>
+            <button type="submit" class="btn btn-sms btn-success">Save</button>
+            <button type="reset" class="btn btn-sms btn-secondary">Reset</button>
+        </form>
     </div>
 </div>
 @endsection
